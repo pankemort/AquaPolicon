@@ -6,6 +6,6 @@ dbconnect();
 
 
 console.log(process.env.PORT)
-app.listen(4000, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log("server is listening")
 })

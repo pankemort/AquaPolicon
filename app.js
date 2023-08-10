@@ -7,11 +7,11 @@ import { config } from "dotenv";
 export const app = express()  ;
 
 config({
-    path: "./data/config.env",
+    path:"./data/config.env",
 });
 //middleware 
 app.use(express.json())
-app.use("/api/v1/users",router)
+app.use("/users",router)
 
 
 app.get('/' , (req,res) =>{
