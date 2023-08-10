@@ -24,19 +24,19 @@ export const register = async (req,res) =>{
 
 
     let users =  await Users.findOne({email});
-    if(users) return res.status(404).json({
+    if(users) {
+    return res.status(405).json({
         success:false,
         message:"User already exists",
-    });
-
+    })}
     const hashedpassword = bcrypt.hash(password,10);
 
-    users = await Users.create({name, email,password:hashedpassword})
+    users = await Users.create({name, email, password:hashedpassword})
     const token = jwt.sign({_id:users._id}, process.env.JWT_SECRET);
 
     res.status(201).cookie("token" ,token,{
         httpOnly:true,
-        maxAge:15*60*1000,
+        maxAge: 15*60*1000,
     }).json({
         success:true,
         message:"registered successfullly",

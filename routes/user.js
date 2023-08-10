@@ -4,11 +4,14 @@ import { getallusers, getdatabyid, login, register } from "../controllers/user.j
 
 const router = express.Router();
 
-router.get('/all' ,getallusers)
+router.get('/all' ,getallusers);
  
- router.get('/userid' ,getdatabyid)
+ router.get('/userid' ,getdatabyid);
 
-  router.post('/new' , register)
- router.post('/login' , login)
+router.post('/new' , register);
+ router.post('/login' , login);
+ router.get('/' , (req,res) =>{
+    res.send("nice wokring")
+})
 
  export default router;

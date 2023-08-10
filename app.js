@@ -11,9 +11,6 @@ config({
 });
 //middleware 
 app.use(express.json())
-app.use("/users",router)
+app.use("/api/v1/users",router)
 
 
-app.get('/' , (req,res) =>{
-    res.send("nice wokring")
-})
