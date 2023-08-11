@@ -7,6 +7,13 @@ export const sendcookie =(user, res, message,statusCode=200) =>{
     res.status(201).cookie("token" ,token,{
         httpOnly:true,
         maxAge: 15*60*1000,
+        
+            origin:[process.env.FRONTEND_URL],
+            methods:["GET", "PUT", "POST","DELETE"],
+            credentials:true,
+            sameSite:process.env.NODE_ENV==="Development" ?"lax":"none",
+            secure:process.env.NODE_ENV==="Development" ?false: true,
+    
     }).json({
         success:true,
         message,

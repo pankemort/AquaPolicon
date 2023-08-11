@@ -79,7 +79,17 @@ export const register = async(req,res) =>{
  export const logout = (req,res) =>{
     // const id = "myid";
 
-    res.status(200).cookie("token","",{expires:new Date(Date.now())}).json({
+    res.status(200).cookie("token","",{expires:new Date(Date.now()),
+        
+            origin:[process.env.FRONTEND_URL],
+            methods:["GET", "PUT", "POST","DELETE"],
+            credentials:true,
+            sameSite:process.env.NODE_ENV==="Development" ?"lax":"none",
+            secure:process.env.NODE_ENV==="Development" ?false: true,
+        
+    
+    
+    }).json({
         success:true,
         user:req.user,
     })
