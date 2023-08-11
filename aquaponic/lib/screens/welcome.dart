@@ -1,3 +1,5 @@
+import 'package:aquaponic/screens/auth.dart';
+import 'package:aquaponic/screens/graph.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -9,26 +11,15 @@ class WelcomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Aquaponic"),
         actions: [
-          Row(
-            children: [
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Sign Up",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => const AuthScreen(),
                 ),
-              ),
-              const SizedBox(
-                width: 12,
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("Sign In"),
-              ),
-            ],
+              );
+            },
+            child: const Text("Sign In"),
           )
         ],
       ),
@@ -64,7 +55,10 @@ class WelcomeScreen extends StatelessWidget {
               height: 24,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: ((context) => const GraphScreen())));
+              },
               child: const Text("See Live Updates"),
             ),
           ],
