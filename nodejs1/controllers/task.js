@@ -1,10 +1,18 @@
 import { Task } from "../models/task.js"
 
 export const newTask = async(req,res,next)=>{
-    const {title,description} = req.body;
-    await Task.create ({
-        title,
-        description,
+    const {
+        temperature,
+        dissolvedOxygen,
+        pH,
+        ammonia,nitrate} = req.body;
+   let tasks = await Task.create ({
+        
+        temperature,
+        dissolvedOxygen,
+        pH,
+        ammonia,nitrate,
+
         user:req.user,
     });
     res.status(201).json({
